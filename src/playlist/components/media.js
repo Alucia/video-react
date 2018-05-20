@@ -1,31 +1,34 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import './media.css';
 
-class Media extends Component {
-  //es6
+class Media extends PureComponent {
+ //es6
   // constructor(props) {
   //   super(props)
-  //   this.handleClick = this.handleClick.bind(this);
+  //   this.state = {
+  //     author: props.author
+  //   }
   // }
-
-  //es6
-  // handleClick(event) {
-  //   console.log(event)
-  // }
-
+  state = {
+    author: 'AnaCarhuaz'
+  }
   //es7
+
   handleClick = (event) => {
-    console.log(this.props.image)
+    // console.log(this.props.image)
+    this.setState({
+      author: 'Ana Lucia Carhuaz',
+    })
   }
   render() {
     return (
       <div className="Media" onClick={this.handleClick}>
         <div className="Media-cover">
           <img 
-            src={this.props.image}
+            src={this.props.cover}
             alt=""
-            width={260}
+            width={240}
             height={160}
             className="Media-image"
           />        
@@ -38,7 +41,7 @@ class Media extends Component {
 }
 
 Media.propTypes = {
-  image: PropTypes.string,
+  cover: PropTypes.string,
   title: PropTypes.string.isRequired,
   author: PropTypes.string,
   type: PropTypes.oneOf(['video','audio'])
